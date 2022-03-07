@@ -1,16 +1,10 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Feb 14 15:39:43 2022
-
-@author: wimarti
-"""
+# Ball Bouncing Screensaver
 
 import sys
 import pygame
 import random
 from pongFunctions import *
 
-r = 40
 tickValue = 100
 
 ballInput = input('Enter number of balls:  ')
@@ -35,10 +29,11 @@ y = [None] * (numBalls)
 xvel = [None] * (numBalls)
 yvel = [None] * (numBalls)
 ballColor = [None] * (numBalls)
+r = [40] * (numBalls)
 
-for i in range(0,numBalls):
-    x[i] = random.randint(0, winBase - r)
-    y[i] = random.randint(0, winHeight - r)
+for i in range(0, numBalls):
+    x[i] = random.randint(0, winBase - r[i])
+    y[i] = random.randint(0, winHeight - r[i])
     if i % 2 == 0:
         xvel[i] = 2
         yvel[i] = 1
@@ -55,15 +50,16 @@ while game == True:
     
     win.fill((20, 20, 20)) # clear board
     
-    # Draw circle and set postion for next circle
+    # Draw circle and set position for next circle
     
     for i in range(0,len(x)):
-        pygame.draw.circle(win, ballColor[i], (x[i],y[i]), r)
+        pygame.draw.circle(win, ballColor[i], (x[i],y[i]), r[i])
         x[i] += xvel[i]
         y[i] += yvel[i]
         [x[i], y[i], xvel[i], yvel[i]] = circlecoord(x[i], y[i], xvel[i],
-                                                     yvel[i], r, winBase,
+                                                     yvel[i], r[i], winBase,
                                                      winHeight)
+        #[xvel, yvel] = checkcontactbounce(x, y, xvel, yvel, r, i)
 
     clock.tick(tickValue)
     pygame.display.update()

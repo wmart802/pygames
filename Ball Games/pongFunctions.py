@@ -1,12 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Feb 16 15:38:10 2022
-
-@author: wimarti
-"""
+import math
 
 def circlecoord(x, y, xvel, yvel, r, width, height):
-    
+
     if x + r >= width: # if circle hits right border change x vel
         x = width - r
         xvel *= -1
@@ -24,4 +19,25 @@ def circlecoord(x, y, xvel, yvel, r, width, height):
         yvel *= -1
 
     return(x,y,xvel,yvel)
-        
+
+
+def checkcontactbounce(x, y, xvel, yvel, r, iter):
+
+    xcurrent = x[iter]
+    ycurrent = y[iter]
+    d = [None]*len(x)
+
+    for i in range(0,len(x)):
+        d = math.sqrt((x[iter] - x[i])**2 + (y[iter] - y[i])**2) # calculates distance between balls
+        if d < (r[i]+r[iter]):
+
+            if (xvel[iter] > 0 and xvel[i] < 0) or (xvel[iter] < 0 and xvel[i] > 0):
+                xvel[iter] *= -1
+                xvel[i] *= -1
+
+            if (yvel[iter] > 0 and yvel[i] < 0) or (yvel[iter] < 0 and yvel[i] > 0):
+                yvel[iter] *= -1
+                yvel[i] *= -1
+
+    return xvel, yvel
+
