@@ -18,21 +18,25 @@ boardBorder = boardLength // 20
 x0 = (winBase - boardLength) // 2
 x = [x0, x0 + dx, x0 + 2*dx, x0 + 3*dx]
 y = [boardBorder, boardBorder+dx, boardBorder+2*dx, boardBorder+3*dx]
+xmids = [x[1] - dx // 2, x[2] - dx // 2, x[3] - dx // 2]
+ymids= [y[1] - dx // 2, y[2] - dx // 2, y[3] - dx // 2]
 tboxHeight = winHeight - (boardLength + 2*boardBorder)
 
 # Geometries for Drawing
 lwidth = winBase // 140
+
+# Initializing
+pygame.init()
+win = pygame.display.set_mode((winBase, winHeight))
+pygame.display.set_caption('Playing Pygame')
 
 # Game Variables
 spots = [0]*9
 p1 = 1
 p2 = -1
 player = -1
-
-# Initializing
-pygame.init()
-win = pygame.display.set_mode((winBase, winHeight))
-pygame.display.set_caption('Playing Pygame')
+gamefont = pygame.font.Font('Arial.ttf', dx // 4)
+text = 'Playing Tic Tac Toe!'
 
 # Color setting
 win.fill(mycolors.offwhite)
@@ -71,31 +75,45 @@ while playing:
     pygame.draw.line(win, cb, (x[0], y[2]), (x[3], y[2]), lwidth)
 
     # Draw Test Boxes
-    pygame.draw.rect(win, mycolors.offwhite, (0, y[3], winBase, tboxHeight))
-    pygame.draw.rect(win, mycolors.black, (0, y[3] + boardBorder, winBase, tboxHeight), lwidth)
+    tbox = pygame.draw.rect(win, mycolors.offwhite, (0, y[3] + boardBorder, winBase, tboxHeight))
+    tboxOutline = pygame.draw.rect(win, mycolors.black, (0, y[3] + boardBorder, winBase, tboxHeight), lwidth)
+    displaytext = gamefont.render(text, True, mycolors.black)
+    textrect = displaytext.get_rect()
+    textrect.center = (winBase // 2, winHeight - tboxHeight // 2)
+    win.blit(displaytext, textrect)
+
 
     # Drawing Selection
     if goodSelection:
         player *= -1
         spots[spotsIndex] = player
         if player == 1:
-            pygame.draw.circle(win, c1, (x[i] - (dx // 2), y[j] - (dx // 2)), dx*2 // 5)
+            pygame.draw.line(win, c1, (xmids[i-1] + dx // 4, ymids[j-1] + dx // 4),
+                             (xmids[i-1] - dx // 4, ymids[j-1] - dx // 4), 2*lwidth)
+            pygame.draw.line(win, c1, (xmids[i - 1] + dx // 4, ymids[j - 1] - dx // 4),
+                             (xmids[i - 1] - dx // 4, ymids[j - 1] + dx // 4), 2 * lwidth)
         elif player == -1:
-            pygame.draw.circle(win, c2, (x[i] - (dx // 2), y[j] - (dx // 2)), dx * 2 // 5)
+            pygame.draw.circle(win, c2, (xmids[i-1], ymids[j-1]), dx // 3, 2*lwidth)
 
     pygame.display.update()
 
     # Checking for winner
     winner = checkwinner(spots)
     if winner:
-        time.sleep(1)
+        pygame.time.wait(300)
         if winner == 1:
-            win.fill(c1)
+            text = 'Player 1 Wins!'
+            tbox = pygame.draw.rect(win, mycolors.offwhite, (0, y[3] + boardBorder, winBase, tboxHeight))
+            tboxOutline = pygame.draw.rect(win, mycolors.black, (0, y[3] + boardBorder, winBase, tboxHeight), lwidth)
+            updatetext(win, gamefont, text,  tboxHeight)
             pygame.display.update()
         elif winner == -1:
-            win.fill(c2)
+            text = 'Player 2 Wins!'
+            tbox = pygame.draw.rect(win, mycolors.offwhite, (0, y[3] + boardBorder, winBase, tboxHeight))
+            tboxOutline = pygame.draw.rect(win, mycolors.black, (0, y[3] + boardBorder, winBase, tboxHeight), lwidth)
+            updatetext(win, gamefont, text, tboxHeight)
             pygame.display.update()
-        time.sleep(4)
+        pygame.time.wait(4000)
         playing = False
 
 pygame.quit()

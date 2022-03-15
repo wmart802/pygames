@@ -1,5 +1,7 @@
 # Functions for Tic Tac Toe Game
 
+import mycolors
+
 def checkwinner(boardspots):
     winner = False
     # Check three across
@@ -23,3 +25,10 @@ def checkwinner(boardspots):
         winner = boardspots[2]
 
     return winner
+
+def updatetext(win, gamefont, text, textboxheight):
+    # Updates text in tbox
+    displaytext = gamefont.render(text, True, mycolors.black)
+    textrect = displaytext.get_rect()
+    textrect.center = (win.get_width() / 2, win.get_height() - textboxheight / 2)
+    win.blit(displaytext, textrect)
