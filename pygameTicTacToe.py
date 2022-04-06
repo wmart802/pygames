@@ -34,7 +34,7 @@ pygame.display.set_caption('Playing Pygame')
 spots = [0]*9
 p1 = 1
 p2 = -1
-player = -1
+player = 1
 gamefont = pygame.font.Font('Arial.ttf', dx // 4)
 text = 'Playing Tic Tac Toe!'
 
@@ -84,8 +84,7 @@ while playing:
 
 
     # Drawing Selection
-    if goodSelection:
-        player *= -1
+    if goodSelection and spots[spotsIndex] == 0:
         spots[spotsIndex] = player
         if player == 1:
             pygame.draw.line(win, c1, (xmids[i-1] + dx // 4, ymids[j-1] + dx // 4),
@@ -94,6 +93,7 @@ while playing:
                              (xmids[i - 1] - dx // 4, ymids[j - 1] + dx // 4), 2 * lwidth)
         elif player == -1:
             pygame.draw.circle(win, c2, (xmids[i-1], ymids[j-1]), dx // 3, 2*lwidth)
+        player *= -1
 
     pygame.display.update()
 
@@ -115,5 +115,14 @@ while playing:
             pygame.display.update()
         pygame.time.wait(4000)
         playing = False
+    elif 0 not in spots:
+        text = 'It\'s a Tie!'
+        tbox = pygame.draw.rect(win, mycolors.offwhite, (0, y[3] + boardBorder, winBase, tboxHeight))
+        tboxOutline = pygame.draw.rect(win, mycolors.black, (0, y[3] + boardBorder, winBase, tboxHeight), lwidth)
+        updatetext(win, gamefont, text, tboxHeight)
+        pygame.display.update()
+        pygame.time.wait(4000)
+        playing = False
+
 
 pygame.quit()
