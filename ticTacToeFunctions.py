@@ -1,6 +1,7 @@
 # Functions for Tic Tac Toe Game
 
 import mycolors
+import pygame
 
 def checkwinner(boardspots):
     winner = False
