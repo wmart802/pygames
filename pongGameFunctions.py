@@ -30,10 +30,10 @@ def checkPlayerBounce(playerObject, playerWidthHeight, ballLocation, ballVelocit
     velChange = 1
     if playerObject.top <= ballLocation[1] <= playerObject.bottom:
         if playerObjectX >= ballCheckPoint and leftright == -1:
-            velChange = -1.05
+            velChange = -1.3
             madeHit = 2
         elif playerObjectX - playerWidthHeight[0]*0.8 <= ballCheckPoint and leftright == 1:
-            velChange = -1.05
+            velChange = -1.3
             madeHit = 1
 
     ballVelocity[0] *= velChange

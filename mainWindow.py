@@ -94,9 +94,11 @@ def openmainmenu():
 
     pygame.quit()
 
-    if game == 1:
+    if game == 1 and multiPlayC == selectColors[0]:
         playpong(2)
-    elif game == 2:
+    elif game == 2 and multiPlayC == selectColors[0]:
         playtictactoe(2)
+    elif game == 2 and singlePlayC == selectColors[0]:
+        playtictactoe(1)
 
 openmainmenu()

@@ -28,7 +28,7 @@ def playpong(numplayers):
     # Setting Parameters for Ball and Players
     playerWidthHeight = [winBase // 25, winHeight // 5]
     ballLoc = [winBase // 2, winHeight // 2]
-    ballV = [2, 1]
+    ballV = [2, random.randint(0, 1)*2-1]
     ballR = winBase // 30
     p1loc = winHeight // 2
     p2loc = winHeight // 2
@@ -73,7 +73,7 @@ def playpong(numplayers):
         if score:
             scoreTime = pygame.time.get_ticks()
             ballLoc = [winBase // 2, winHeight // 2]
-            ballV = [2*-1*score, 1]
+            ballV = [2*-1*score, random.randint(0, 1)*2-1]
             p1loc = winHeight // 2
             p2loc = winHeight // 2
             if score == 1:

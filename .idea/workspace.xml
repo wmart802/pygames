@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f8b54797-1ef8-4601-b814-4944a5b6386a" name="Changes" comment="Committing files for main window opener">
-      <change afterPath="$PROJECT_DIR$/Arial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mainWindow.py" afterDir="false" />
+    <list default="true" id="f8b54797-1ef8-4601-b814-4944a5b6386a" name="Changes" comment="Pong updated to include score and better player bounces. Pong now connected to main window.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mainWindow.py" beforeDir="false" afterPath="$PROJECT_DIR$/mainWindow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pong.py" beforeDir="false" afterPath="$PROJECT_DIR$/pong.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pongGameFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/pongGameFunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pygameTicTacToe.py" beforeDir="false" afterPath="$PROJECT_DIR$/pygameTicTacToe.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ticTacToeFunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/ticTacToeFunctions.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,8 +185,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.mainWindow" />
-        <item itemvalue="Python.pygameTicTacToe" />
         <item itemvalue="Python.pong" />
+        <item itemvalue="Python.pygameTicTacToe" />
         <item itemvalue="Python.gamin" />
         <item itemvalue="Python.pongFunctions" />
       </list>
@@ -247,7 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1649276068474</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Committing files for main window opener">
+      <created>1649276378858</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1649276378858</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Pong updated to include score and better player bounces. Pong now connected to main window.">
+      <created>1649877052581</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1649877052581</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +285,8 @@
     <MESSAGE value="Commiting updates. Not fully operable but ball does now bounce for pong." />
     <MESSAGE value="Committing files for 1.0 version of tic tac toe" />
     <MESSAGE value="Committing files for main window opener" />
-    <option name="LAST_COMMIT_MESSAGE" value="Committing files for main window opener" />
+    <MESSAGE value="Pong updated to include score and better player bounces. Pong now connected to main window." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pong updated to include score and better player bounces. Pong now connected to main window." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
